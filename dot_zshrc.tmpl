@@ -21,7 +21,9 @@ source ~/.builders.zsh
 # Customize to your needs...
 source $HOME/.bashrc
 
+{{- if eq .chezmoi.os "darwin" }}
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+{{- end }}
 
 ###-tns-completion-start-###
 if [ -f /Users/ruivieira/.tnsrc ]; then
