@@ -47,13 +47,8 @@ export PATH=/usr/local/bin:$PATH
 
 export PATH=$(pyenv root)/shims:$PATH
 
-# added by Anaconda3 5.2.0 installer
-#export PATH="/anaconda3/bin:$PATH"
-
 # call neofetch
 neofetch --iterm2 ~/.images/hexley.png --size 300px
-export PATH="$HOME/.poetry/bin:$PATH"
-source "$HOME/.cargo/env"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="{{ .chezmoi.homeDir }}/.sdkman"
