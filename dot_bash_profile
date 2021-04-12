@@ -12,8 +12,10 @@ export PATH=$TEX:$PATH
 # add sbin
 export PATH=/usr/local/sbin:$PATH
 
+{{- if eq .chezmoi.os "darwin" }}
 # This hack is to work around an R/Java bug in OS X
 export LD_LIBRARY_PATH=$(/usr/libexec/java_home -v 1.8)/jre/lib/server
+{{- end }}
 
 #TextMate LaTeX compiler
 export TM_LATEX_COMPILER=/usr/texbin/pdflatex
