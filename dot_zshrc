@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # aliases
-source ~/.aliasrc
+source $HOME/.aliasrc
 
 export ZSH_THEME="sunrise"
 
