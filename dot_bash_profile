@@ -5,19 +5,6 @@ export EDITOR=/usr/local/bin/code
 # export base PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/bin
 
-# macOS specific java environment
-
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-
-alias java8='export JAVA_HOME=$JAVA_8_HOME'
-alias java11='export JAVA_HOME=$JAVA_11_HOME'
-
-export JAVA_HOME=$JAVA_11_HOME
-
-# Scala path
-export PATH=$PATH:/opt/scala/bin
-
 # TeXLive for OS X
 export TEX=/usr/local/texlive/2016/bin/x86_64-darwin
 export PATH=$TEX:$PATH
@@ -54,11 +41,6 @@ fi
 # For some reason /usr/local/bin is not on the path
 # also, it needs to be first due to brew
 export PATH=/usr/local/bin:$PATH
-
-export PATH=$(pyenv root)/shims:$PATH
-
-# added by Anaconda3 5.2.0 installer
-#export PATH="/anaconda3/bin:$PATH"
 
 # call neofetch
 neofetch --iterm2 ~/.images/hexley.png --size 300px
