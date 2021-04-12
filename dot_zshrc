@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # aliases
-alias del="mv -t ~/.Trash/"
+source ~/.aliasrc
 
 export ZSH_THEME="sunrise"
 
