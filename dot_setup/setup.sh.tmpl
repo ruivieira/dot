@@ -1,5 +1,11 @@
 #! /usr/bin/env sh
 {{- if eq .chezmoi.os "darwin" }}
+echo "Updating brew"
+brew update
 echo "Installing KeePassXC"
-brew install --cask keepassxc
+HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask keepassxc
+echo "Installing R"
+HOMEBREW_NO_AUTO_UPDATE=1 brew install r
+echo "Installing R studio"
+HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask rstudio
 {{- end }}
