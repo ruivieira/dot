@@ -1,0 +1,5 @@
+#! /usr/bin/env sh
+{{- if eq .chezmoi.os "darwin" }}
+echo "Installing KeePassXC"
+brew install --cask keepassxc
+{{- end }}

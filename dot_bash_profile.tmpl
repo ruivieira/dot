@@ -1,6 +1,4 @@
-##Add below lines in the profile
-
-export EDITOR=/usr/bin/nvim
+## commands that should run only once
 
 # export base PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/bin
@@ -45,10 +43,6 @@ fi
 # also, it needs to be first due to brew
 export PATH=/usr/local/bin:$PATH
 
-export PATH=$(pyenv root)/shims:$PATH
-
-# call neofetch
-neofetch --iterm2 ~/.images/hexley.png --size 300px
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="{{ .chezmoi.homeDir }}/.sdkman"

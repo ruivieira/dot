@@ -1,8 +1,9 @@
-## Common configuration for all systems (macOS, Linux, etc...)
+## commands that should run every time you launch a new shell
 
 # LS_COLORS
 LS_COLORS='*.py=31:*.pyc=90:*.db=93:*.bat=31:*.txt=93'
 
 export LS_COLORS
 
-source .bash_profile
+source $HOME/.bash_profile
+source $HOME/.aliasrc

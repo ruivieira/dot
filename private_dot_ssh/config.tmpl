@@ -1,0 +1,8 @@
+Host remarkable
+  HostName {{ keepassxcAttribute "Remarkable" "host" }}
+  User root
+
+Host rsyncnet
+  HostName {{ keepassxcAttribute "rsync.net" "host" }}
+  User {{ keepassxcAttribute "rsync.net" "user" }}
+  IdentityFile ~/.ssh/rsync.net
