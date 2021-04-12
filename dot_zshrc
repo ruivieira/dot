@@ -23,12 +23,6 @@ source $HOME/.bashrc
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-# jEnv configuration
-# eval "$(jenv init -)"
-
-# pyenv configuration
-eval "$(pyenv init -)"
-
 ###-tns-completion-start-###
 if [ -f /Users/ruivieira/.tnsrc ]; then
     source /Users/ruivieira/.tnsrc
@@ -60,6 +54,3 @@ export PATH=$PATH:$GOPATH/bin
 
 # GraalVM binaries path
 export PATH=$PATH:/opt/graalvm/Contents/Home/binexport PATH="/usr/local/opt/llvm/bin:$PATH"
-
-# read secrets
-source ~/.secrets

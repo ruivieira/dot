@@ -62,8 +62,6 @@ export PATH=$(pyenv root)/shims:$PATH
 
 # call neofetch
 neofetch --iterm2 ~/.images/hexley.png --size 300px
-export PATH="$HOME/.poetry/bin:$PATH"
-source "$HOME/.cargo/env"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/rui/.sdkman"
