@@ -8,4 +8,14 @@ echo "Installing R"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install r
 echo "Installing R studio"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask rstudio
+echo "Installing Micro"
+HOMEBREW_NO_AUTO_UPDATE=1  brew install micro
+echo "Installing Restic"
+HOMEBREW_NO_AUTO_UPDATE=1  brew install restic
+echo "Installing Syncthing"
+HOMEBREW_NO_AUTO_UPDATE=1  brew install syncthing
 {{- end }}
+
+# common install
+echo "Installing jbang"
+curl -Ls https://sh.jbang.dev | bash -s - app setup

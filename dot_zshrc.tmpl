@@ -54,7 +54,11 @@ export PATH=$PATH:$GOPATH/bin
 # B2 account
 export B2_ACCOUNT_ID='{{ keepassxcAttribute "B2" "account_id" }}'
 export B2_ACCOUNT_KEY='{{ keepassxcAttribute "B2" "account_key" }}'
-export RESTIC_PASSWORD='{{ keepassxcAttribute "B2" "restic_password" }}'
+export RESTIC_PASSWORD='{{ (keepassxc "Restic").Password }}'
+
+# AWS/Wasabi
+export AWS_ACCESS_KEY_ID='{{ keepassxcAttribute "Wasabi" "backup_user_key_id" }}'
+export AWS_SECRET_ACCESS_KEY='{{ keepassxcAttribute "Wasabi" "backup_user_secret_key" }}'
 
 # sourcehut OAuth token
 export SOURCEHUT_PAGES_OAUTH="{{ keepassxcAttribute "Sourcehut" "oauth" }}"

@@ -1,0 +1,14 @@
+[B2]
+type = b2
+account = {{ keepassxcAttribute "B2" "rclone_key_id" }}
+key = {{ keepassxcAttribute "B2" "rclone_application_key" }}
+hard_delete = true
+
+[wasabi]
+type = s3
+provider = Wasabi
+access_key_id = {{ keepassxcAttribute "Wasabi" "backup_user_key_id" }}
+secret_access_key = {{ keepassxcAttribute "Wasabi" "backup_user_secret_key" }}
+region = {{ keepassxcAttribute "Wasabi" "region" }}
+endpoint = {{ keepassxcAttribute "Wasabi" "endpoint" }}
+acl = 
