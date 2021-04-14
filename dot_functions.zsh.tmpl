@@ -98,3 +98,7 @@ function rclone_wasabi_backup() {
 	echo -e "${GREEN}[rclone]${NOCOLOR} Backing up code to ${YELLOW}Wasabi:{{ keepassxcAttribute "Wasabi" "code_bucket_name" }}${NOCOLOR}"
 	rclone sync --fast-list -v --exclude-from='.stignore' ~/Sync/code wasabi:{{ keepassxcAttribute "Wasabi" "code_bucket_name" }}
 }
+
+function knitmd {
+	Rscript -e "library(knitr); knit('$1')"
+}

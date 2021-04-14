@@ -2,6 +2,8 @@
 {{- if eq .chezmoi.os "darwin" }}
 echo "Updating brew"
 brew update
+echo "Installing deno"
+HOMEBREW_NO_AUTO_UPDATE=1 brew install deno
 echo "Installing KeePassXC"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask keepassxc
 echo "Installing R"
