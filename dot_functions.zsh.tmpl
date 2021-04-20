@@ -35,6 +35,8 @@ function prepare_backup() {
 	cd ~/Sync/
 	echo -e "${GREEN}Sync code folders${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/code ~/Dropbox/code/backup/
+	echo -e "${GREEN}Sync notes folders${NOCOLOR}"
+	rsync -avh --exclude-from='.stignore' --delete  ~/notes ~/Dropbox/notes/
 	echo -e "${GREEN}Sync wiki folder${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application\ Support/co.noteplan.NotePlan3/ ~/Dropbox/wiki/
 }
@@ -65,6 +67,8 @@ function restic_b2_backup() {
 	restic -r b2:$BUCKET:/ --verbose backup ~/Sync/sites --exclude-file="${HOME}/Sync/.stignore"
 	echo -e "${GREEN}[restic]${NOCOLOR} Backing up wiki to ${YELLOW}B2:$BUCKET${NOCOLOR}"
 	restic -r b2:$BUCKET:/ --verbose backup ~/Dropbox/wiki --exclude-file="${HOME}/Sync/.stignore"
+	echo -e "${GREEN}[restic]${NOCOLOR} Backing up notes to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	restic -r b2:$BUCKET:/ --verbose backup ~/notes --exclude-file="${HOME}/Sync/.stignore"
 	echo -e "${GREEN}[restic]${NOCOLOR} Backing up joplin to ${YELLOW}B2:$BUCKET${NOCOLOR}"
 	restic -r b2:$BUCKET:/ --verbose backup ~/.config/joplin-desktop \
 	 	--exclude="cache" --exclude="log-autoupdater.txt" --exclude="log-clipper.txt" --exclude="log.txt" --exclude="tmp"
@@ -101,4 +105,12 @@ function rclone_wasabi_backup() {
 
 function knitmd {
 	Rscript -e "library(knitr); knit('$1')"
+}
+
+function syncthing_conflicts {
+	find $1 -name "*.sync-conflict*"
+}
+
+function syncthing_conflicts_delete {
+	find "$1" -name "*.sync-conflict*" -delete
 }
