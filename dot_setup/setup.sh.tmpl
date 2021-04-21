@@ -4,6 +4,8 @@ echo "Updating brew"
 brew update
 echo "Installing deno"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install deno
+echo "Installing git-bug"
+HOMEBREW_NO_AUTO_UPDATE=1 brew install git-bug 
 echo "Installing KeePassXC"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask keepassxc
 echo "Installing R"
@@ -20,8 +22,15 @@ echo "Installing starship"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install starship
 echo "Installing Syncthing"
 HOMEBREW_NO_AUTO_UPDATE=1  brew install syncthing
+echo "Installing vim and Neovim"
+HOMEBREW_NO_AUTO_UPDATE=1  brew install vim neovim
 {{- end }}
 
 # common install
 echo "Installing jbang"
 curl -Ls https://sh.jbang.dev | bash -s - app setup
+
+# vimplug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln -nsf ~/.vim/init.vim ~/.vimrc
