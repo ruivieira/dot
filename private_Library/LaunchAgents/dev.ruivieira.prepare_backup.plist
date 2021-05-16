@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>dev.ruivieira.prepare_backup</string>
+  
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string><![CDATA[/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin]]></string>
+    </dict>
+
+    <key>Program</key>
+    <string>/usr/local/bin/deno</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/deno</string>
+      <string>run</string>
+      <string>-A</string>
+      <string>--unstable</string>
+      <string>https://raw.githubusercontent.com/ruivieira/deno-experiments/master/sysadmin/prepare_backup.ts</string>
+    </array>
+  
+    <key>Nice</key>
+    <integer>1</integer>
+  
+    <key>StartInterval</key>
+    <integer>900</integer>
+  
+    <key>RunAtLoad</key>
+    <false/>
+  
+    <key>StandardErrorPath</key>
+    <string>/tmp/PrepareBackup.err</string>
+  
+    <key>StandardOutPath</key>
+    <string>/tmp/PrepareBackup.out</string>
+  </dict>
+  </plist>
