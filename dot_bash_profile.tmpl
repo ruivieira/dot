@@ -6,9 +6,11 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Library/J
 # Scala path
 export PATH=$PATH:/opt/scala/bin
 
+{{- if eq .chezmoi.os "darwin" }}
 # TeXLive for OS X
 export TEX=/usr/local/texlive/2016/bin/x86_64-{{ .chezmoi.os }}
 export PATH=$TEX:$PATH
+{{- end }}
 
 # add sbin
 export PATH=/usr/local/sbin:$PATH

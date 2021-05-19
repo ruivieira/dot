@@ -1,1 +1,7 @@
 workspace.code-workspace
+{{ if ne .chezmoi.os "darwin" }}
+*.plist
+keybindings.json
+settings.json
+{{ end }}
+Dockerfile
