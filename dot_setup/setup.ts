@@ -1,4 +1,4 @@
-import { exec, IExecResponse } from "https://deno.land/x/exec/mod.ts";
+import { exec } from "https://deno.land/x/exec/mod.ts";
 import * as Colors from "https://deno.land/std/fmt/colors.ts";
 
 const OS = Deno.build.os;
@@ -21,7 +21,7 @@ if (OS == "darwin") {
   await exec(cmd);
   console.log(Colors.green("Done!"));
 
-  const brewCasks = ["keepassxc", "rstudio"];
+  const brewCasks = ["keepassxc", "rstudio", "vscodium"];
   console.log(Colors.yellow(`Installing casks ${brewCasks.join(", ")}`));
   for (const cask of brewCasks) {
     await exec(`brew install --cask ${cask}`);
@@ -71,7 +71,7 @@ if (OS == "darwin") {
 
   console.log(Colors.yellow(`Installing VSCode extensions`));
   for (const extension of vscodeExtensions) {
-    await exec(`code --install-extension ${extension}`);
+    await exec(`codium --install-extension ${extension}`);
   }
   console.log(Colors.green("Done!"));
 } else if (OS=="linux") {
