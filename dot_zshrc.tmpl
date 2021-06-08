@@ -48,8 +48,9 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" ✔"
 EDITOR=/usr/local/bin/code
 
 # Go language variables
-export GOPATH=$HOME/code/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/Sync/code/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # B2 account
 export B2_ACCOUNT_ID='{{ keepassxcAttribute "B2" "account_id" }}'
