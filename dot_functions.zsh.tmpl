@@ -102,6 +102,8 @@ function kopia_backup() {
 	kopia snapshot create ~/Dropbox/wiki
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/notes
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up books to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+	kopia snapshot create ~/Dropbox/Documents/Books/eBooks
 }
 
 function restic_wasabi_backup() {
