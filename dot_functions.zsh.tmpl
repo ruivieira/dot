@@ -74,9 +74,9 @@ function restic_b2_backup() {
 	 	--exclude="cache" --exclude="log-autoupdater.txt" --exclude="log-clipper.txt" --exclude="log.txt" --exclude="tmp"
 }
 
-function kopia_connect() {
+function kopia_b2_connect() {
 	local BUCKET='{{ keepassxcAttribute "B2" "kopia_bucket" }}'
-	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to respository ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}B2:$BUCKET${NOCOLOR}"
 	kopia repository connect b2 \
 		--bucket=$BUCKET \
 		--key-id='{{ keepassxcAttribute "B2" "kopia_key_id" }}' \
@@ -84,16 +84,23 @@ function kopia_connect() {
 		--password='{{ (keepassxc "Kopia").Password }}'
 }
 
-function kopia_b2_backup() {
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up code to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+function kopia_local_connect() {
+	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to ${YELLOW}local volume${NOCOLOR}"
+	kopia repository connect filesystem --path=/Volumes/Backup \
+		--password='{{ (keepassxc "Kopia").Password }}'
+}
+
+function kopia_backup() {
+	local CURRENT_REPO=$(kopia repository status | awk 'NR==3' | cut -c 36-)
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up code to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Dropbox/code/backup/code
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up docs to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up docs to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Sync/documents
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up sites to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up sites to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Sync/sites
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up wiki to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up wiki to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Dropbox/wiki
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up notes to ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/notes
 }
 
