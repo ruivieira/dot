@@ -39,6 +39,8 @@ function prepare_backup() {
 	rsync -avh --exclude-from='.stignore' --delete  ~/notes ~/Dropbox/notes/
 	echo -e "${GREEN}Sync wiki folder${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application\ Support/co.noteplan.NotePlan3/ ~/Dropbox/wiki/
+	echo -e "${GREEN}Sync epubs folder${NOCOLOR}"
+	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/documents/books/epubs/ ~/Dropbox/Documents/Books/eBooks/
 }
 
 function docker_nuke() {
@@ -103,7 +105,6 @@ function kopia_backup() {
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/notes
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up books to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
-	kopia snapshot create ~/Dropbox/Documents/Books/eBooks
 }
 
 function restic_wasabi_backup() {
