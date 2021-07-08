@@ -1,0 +1,15 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "shift+cmd+k",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "Rscript -e \"library(knitr); knit('${file}')\"\u000D"
+    }
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  }
+]
