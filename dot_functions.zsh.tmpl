@@ -59,23 +59,6 @@ function b2_upload_backup() {
 	rclone -P sync ~/Backup b2:$B2_BACKUP_BUCKET
 }
 
-function restic_b2_backup() {
-	local BUCKET="{{ keepassxcAttribute "B2" "restic_bucket" }}"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up code to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/Dropbox/code/backup/code --exclude-file="${HOME}/Sync/.stignore"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up docs to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/Sync/documents --exclude-file="${HOME}/Sync/.stignore"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up sites to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/Sync/sites --exclude-file="${HOME}/Sync/.stignore"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up wiki to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/Dropbox/wiki --exclude-file="${HOME}/Sync/.stignore"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up notes to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/notes --exclude-file="${HOME}/Sync/.stignore"
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up joplin to ${YELLOW}B2:$BUCKET${NOCOLOR}"
-	restic -r b2:$BUCKET:/ --verbose backup ~/.config/joplin-desktop \
-	 	--exclude="cache" --exclude="log-autoupdater.txt" --exclude="log-clipper.txt" --exclude="log.txt" --exclude="tmp"
-}
-
 function kopia_b2_connect() {
 	local BUCKET='{{ keepassxcAttribute "B2" "kopia_bucket" }}'
 	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}B2:$BUCKET${NOCOLOR}"
@@ -105,11 +88,6 @@ function kopia_backup() {
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/notes
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up books to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
-}
-
-function restic_wasabi_backup() {
-	echo -e "${GREEN}[restic]${NOCOLOR} Backing up code to ${YELLOW}Wasabi:{{ keepassxcAttribute "Wasabi" "code_bucket_name" }}${NOCOLOR}"
-	 restic -r s3:https://{{ keepassxcAttribute "Wasabi" "endpoint" }}/{{ keepassxcAttribute "Wasabi" "code_bucket_name" }}/ --verbose backup ~/Dropbox/code/backup/code --exclude-file="${HOME}/Sync/.stignore"
 }
 
 function rsync_net_backup() {
