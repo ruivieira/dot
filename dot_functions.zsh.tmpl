@@ -36,7 +36,7 @@ function prepare_backup() {
 	echo -e "${GREEN}Sync code folders${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/code ~/Dropbox/code/backup/
 	echo -e "${GREEN}Sync notes folders${NOCOLOR}"
-	rsync -avh --exclude-from='.stignore' --delete  ~/notes ~/Dropbox/notes/
+	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/notes ~/Dropbox/notes/
 	echo -e "${GREEN}Sync wiki folder${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application\ Support/co.noteplan.NotePlan3/ ~/Dropbox/wiki/
 	echo -e "${GREEN}Sync epubs folder${NOCOLOR}"
@@ -86,8 +86,7 @@ function kopia_backup() {
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up wiki to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Dropbox/wiki
 	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
-	kopia snapshot create ~/notes
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up books to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+	kopia snapshot create ~/Sync/notes
 }
 
 function rsync_net_backup() {
