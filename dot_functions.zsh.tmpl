@@ -35,11 +35,11 @@ function prepare_backup() {
 	cd ~/Sync/
 	echo -e "${GREEN}Sync code folders${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/code ~/Dropbox/code/backup/
-	echo -e "${GREEN}Sync notes folders${NOCOLOR}"
+
+    echo -e "${GREEN}Sync notes folders${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/notes ~/Dropbox/notes/
-	echo -e "${GREEN}Sync wiki folder${NOCOLOR}"
-	rsync -avh --exclude-from='.stignore' --delete  ~/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application\ Support/co.noteplan.NotePlan3/ ~/Dropbox/wiki/
-	echo -e "${GREEN}Sync epubs folder${NOCOLOR}"
+
+    echo -e "${GREEN}Sync epubs folder${NOCOLOR}"
 	rsync -avh --exclude-from='.stignore' --delete  ~/Sync/documents/books/epubs/ ~/Dropbox/Documents/Books/eBooks/
 }
 
@@ -77,15 +77,17 @@ function kopia_local_connect() {
 
 function kopia_backup() {
 	local CURRENT_REPO=$(kopia repository status | awk 'NR==3' | cut -c 36-)
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up code to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+
+    echo -e "${GREEN}[kopia]${NOCOLOR} Backing up code to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Dropbox/code/backup/code
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up docs to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+
+    echo -e "${GREEN}[kopia]${NOCOLOR} Backing up docs to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Sync/documents
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up sites to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+
+    echo -e "${GREEN}[kopia]${NOCOLOR} Backing up sites to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Sync/sites
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up wiki to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
-	kopia snapshot create ~/Dropbox/wiki
-	echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
+
+    echo -e "${GREEN}[kopia]${NOCOLOR} Backing up notes to ${YELLOW}$CURRENT_REPO${NOCOLOR}"
 	kopia snapshot create ~/Sync/notes
 }
 
