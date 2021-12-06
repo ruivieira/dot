@@ -59,6 +59,17 @@ function b2_upload_backup() {
 	rclone -P sync ~/Backup b2:$B2_BACKUP_BUCKET
 }
 
+function kopia_wasabi_connect() {
+	local BUCKET='{{ keepassxcAttribute "Wasabi" "kopia_bucket" }}'
+	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}Wasabi:$BUCKET${NOCOLOR}"
+	kopia repository connect s3 \
+		--bucket=$BUCKET \
+		--access-key='{{ keepassxcAttribute "Wasabi" "access_key" }}' \
+		--secret-access-key='{{ keepassxcAttribute "Wasabi" "secret_key" }}' \
+		--endpoint='{{ keepassxcAttribute "Wasabi" "endpoint" }}' \
+		--password='{{ (keepassxc "Kopia").Password }}'
+}
+
 function kopia_b2_connect() {
 	local BUCKET='{{ keepassxcAttribute "B2" "kopia_bucket" }}'
 	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}B2:$BUCKET${NOCOLOR}"
