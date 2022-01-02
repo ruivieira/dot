@@ -52,22 +52,6 @@ export GOPATH=$HOME/Sync/code/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
-# B2 account
-export B2_ACCOUNT_ID='{{ keepassxcAttribute "B2" "account_id" }}'
-export B2_ACCOUNT_KEY='{{ keepassxcAttribute "B2" "account_key" }}'
-export RESTIC_PASSWORD='{{ (keepassxc "Restic").Password }}'
-export KOPIA_PASSWORD='{{ (keepassxc "Kopia").Password }}'
-
-# AWS/Wasabi
-export AWS_ACCESS_KEY_ID='{{ keepassxcAttribute "Wasabi" "backup_user_key_id" }}'
-export AWS_SECRET_ACCESS_KEY='{{ keepassxcAttribute "Wasabi" "backup_user_secret_key" }}'
-
-# sourcehut OAuth token
-export SOURCEHUT_PAGES_OAUTH="{{ keepassxcAttribute "Sourcehut" "oauth" }}"
-
-# Todoist token
-export TODOIST_TOKEN="{{ keepassxcAttribute "Todoist" "token" }}"
-
 # call neofetch
 neofetch --iterm2 ~/.images/hexley.png --size 500px
 

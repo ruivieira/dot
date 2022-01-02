@@ -60,30 +60,28 @@ function b2_upload_backup() {
 }
 
 function kopia_wasabi_connect() {
-	local BUCKET='{{ keepassxcAttribute "Wasabi" "kopia_bucket" }}'
-	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}Wasabi:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}Wasabi:$WASABI_KOPIA_BUCKET${NOCOLOR}"
 	kopia repository connect s3 \
-		--bucket=$BUCKET \
-		--access-key='{{ keepassxcAttribute "Wasabi" "access_key" }}' \
-		--secret-access-key='{{ keepassxcAttribute "Wasabi" "secret_key" }}' \
-		--endpoint='{{ keepassxcAttribute "Wasabi" "endpoint" }}' \
-		--password='{{ (keepassxc "Kopia").Password }}'
+		--bucket=$WASABI_KOPIA_BUCKET \
+		--access-key=$WASABI_KOPIA_ACCESS_KEY \
+		--secret-access-key=$WASABI_KOPIA_SECRET_KEY \
+		--endpoint=$WASABI_KOPIA_ENDPOINT \
+		--password=$KOPIA_PASSWORD
 }
 
 function kopia_b2_connect() {
-	local BUCKET='{{ keepassxcAttribute "B2" "kopia_bucket" }}'
-	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}B2:$BUCKET${NOCOLOR}"
+	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to repository ${YELLOW}B2:$B2_KOPIA_BUCKET${NOCOLOR}"
 	kopia repository connect b2 \
-		--bucket=$BUCKET \
-		--key-id='{{ keepassxcAttribute "B2" "kopia_key_id" }}' \
-		--key='{{ keepassxcAttribute "B2" "kopia_application_key" }}' \
-		--password='{{ (keepassxc "Kopia").Password }}'
+		--bucket=$B2_KOPIA_BUCKET \
+		--key-id=$B2_KOPIA_ACCESS_KEY \
+		--key=$B2_KOPIA_SECRET_KEY \
+		--password=$KOPIA_PASSWORD
 }
 
 function kopia_local_connect() {
 	echo -e "${GREEN}[kopia]${NOCOLOR} connecting to ${YELLOW}local volume${NOCOLOR}"
 	kopia repository connect filesystem --path=/Volumes/Backup \
-		--password='{{ (keepassxc "Kopia").Password }}'
+		--password=$KOPIA_PASSWORD
 }
 
 function kopia_backup() {
