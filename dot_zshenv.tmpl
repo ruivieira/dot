@@ -1,0 +1,34 @@
+source "$HOME/.cargo/env"
+
+# B2 account
+export B2_ACCOUNT_ID='{{ keepassxcAttribute "B2" "account_id" }}'
+export B2_ACCOUNT_KEY='{{ keepassxcAttribute "B2" "account_key" }}'
+export RESTIC_PASSWORD='{{ (keepassxc "Restic").Password }}'
+export KOPIA_PASSWORD='{{ (keepassxc "Kopia").Password }}'
+
+# AWS/Wasabi
+export AWS_ACCESS_KEY_ID='{{ keepassxcAttribute "Wasabi" "backup_user_key_id" }}'
+export AWS_SECRET_ACCESS_KEY='{{ keepassxcAttribute "Wasabi" "backup_user_secret_key" }}'
+
+export WASABI_KOPIA_BUCKET='{{ keepassxcAttribute "Wasabi" "kopia_bucket" }}'
+export WASABI_KOPIA_ACCESS_KEY='{{ keepassxcAttribute "Wasabi" "access_key" }}'
+export WASABI_KOPIA_SECRET_KEY='{{ keepassxcAttribute "Wasabi" "secret_key" }}'
+export WASABI_KOPIA_ENDPOINT='{{ keepassxcAttribute "Wasabi" "endpoint" }}'
+
+# B2
+
+export B2_KOPIA_BUCKET='{{ keepassxcAttribute "B2" "kopia_bucket" }}'
+export B2_KOPIA_ACCESS_KEY='{{ keepassxcAttribute "B2" "kopia_key_id" }}'
+export B2_KOPIA_SECRET_KEY='{{ keepassxcAttribute "B2" "kopia_application_key" }}'
+export WASABI_KOPIA_ENDPOINT='{{ keepassxcAttribute "Wasabi" "endpoint" }}'
+export WASABI_KOPIA_PASSWORD='{{ (keepassxc "Kopia").Password }}'
+
+# Kopia
+
+export KOPIA_PASSWORD='{{ (keepassxc "Kopia").Password }}'
+
+# sourcehut OAuth token
+export SOURCEHUT_PAGES_OAUTH="{{ keepassxcAttribute "Sourcehut" "oauth" }}"
+
+# Todoist token
+export TODOIST_TOKEN="{{ keepassxcAttribute "Todoist" "token" }}"
